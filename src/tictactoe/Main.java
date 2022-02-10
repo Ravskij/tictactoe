@@ -21,23 +21,50 @@ public class Main {
             System.out.print("Input command: ");
             String inputCommand = scanner.nextLine();
             switch (inputCommand) {
-                case "start easy easy":
-                    endCaseGame = false;
-                    printField(field);
-                    while (!endCaseGame) {
-                        stupidMove(field);
-                        endCaseGame = checkWin(field);
-                    }
-                    gameResults(field);
-                    break;
                 case "start easy user":
                     endCaseGame = false;
                     printField(field);
                     while (!endCaseGame) {
-                        stupidMove(field);
+                        easyMove(field);
                         endCaseGame = checkWin(field);
                         if (!endCaseGame) {
                             addToField(field);
+                            endCaseGame = checkWin(field);
+                        }
+                    }
+                    gameResults(field);
+                    break;
+                case "start easy easy":
+                    endCaseGame = false;
+                    printField(field);
+                    while (!endCaseGame) {
+                        easyMove(field);
+                        endCaseGame = checkWin(field);
+                    }
+                    gameResults(field);
+                    break;
+                case "start easy medium":
+                    endCaseGame = false;
+                    printField(field);
+                    while (!endCaseGame) {
+                        easyMove(field);
+                        endCaseGame = checkWin(field);
+                        if (!endCaseGame) {
+                            mediumMove(field);
+                            endCaseGame = checkWin(field);
+                        }
+                    }
+                    gameResults(field);
+                    break;
+                case "start easy hard":
+                    endCaseGame = false;
+                    printField(field);
+                    while (!endCaseGame) {
+                        easyMove(field);
+                        endCaseGame = checkWin(field);
+                        if (!endCaseGame) {
+                            userValue = 1;
+                            hardMove(field, userValue);
                             endCaseGame = checkWin(field);
                         }
                     }
@@ -50,7 +77,60 @@ public class Main {
                         addToField(field);
                         endCaseGame = checkWin(field);
                         if (!endCaseGame) {
-                            stupidMove(field);
+                            easyMove(field);
+                            endCaseGame = checkWin(field);
+                        }
+                    }
+                    gameResults(field);
+                    break;
+                case "start user medium":
+                    endCaseGame = false;
+                    printField(field);
+                    while (!endCaseGame) {
+                        addToField(field);
+                        endCaseGame = checkWin(field);
+                        if (!endCaseGame) {
+                            mediumMove(field);
+                            endCaseGame = checkWin(field);
+                        }
+                    }
+                    gameResults(field);
+                    break;
+                case "start user hard":
+                    userValue = 1;
+                    endCaseGame = false;
+                    printField(field);
+                    while (!endCaseGame) {
+                        addToField(field);
+                        endCaseGame = checkWin(field);
+                        if (!endCaseGame) {
+                            hardMove(field, userValue);
+                            endCaseGame = checkWin(field);
+                        }
+                    }
+                    gameResults(field);
+                    break;
+                case "start user user":
+                    endCaseGame = false;
+                    printField(field);
+                    while (!endCaseGame) {
+                        addToField(field);
+                        endCaseGame = checkWin(field);
+                        if (!endCaseGame) {
+                            addToField(field);
+                            endCaseGame = checkWin(field);
+                        }
+                    }
+                    gameResults(field);
+                    break;
+                case "start medium easy":
+                    endCaseGame = false;
+                    printField(field);
+                    while (!endCaseGame) {
+                        mediumMove(field);
+                        endCaseGame = checkWin(field);
+                        if (!endCaseGame) {
+                            easyMove(field);
                             endCaseGame = checkWin(field);
                         }
                     }
@@ -62,6 +142,20 @@ public class Main {
                     while (!endCaseGame) {
                         mediumMove(field);
                         endCaseGame = checkWin(field);
+                    }
+                    gameResults(field);
+                    break;
+                case "start medium hard":
+                    endCaseGame = false;
+                    printField(field);
+                    while (!endCaseGame) {
+                        mediumMove(field);
+                        endCaseGame = checkWin(field);
+                        if (!endCaseGame) {
+                            userValue = 1;
+                            hardMove(field, userValue);
+                            endCaseGame = checkWin(field);
+                        }
                     }
                     gameResults(field);
                     break;
@@ -78,11 +172,26 @@ public class Main {
                     }
                     gameResults(field);
                     break;
-                case "start user medium":
+                case "start hard easy":
                     endCaseGame = false;
                     printField(field);
                     while (!endCaseGame) {
-                        addToField(field);
+                        userValue = -1;
+                        hardMove(field, userValue);
+                        endCaseGame = checkWin(field);
+                        if (!endCaseGame) {
+                            easyMove(field);
+                            endCaseGame = checkWin(field);
+                        }
+                    }
+                    gameResults(field);
+                    break;
+                case "start hard medium":
+                    endCaseGame = false;
+                    printField(field);
+                    while (!endCaseGame) {
+                        userValue = -1;
+                        hardMove(field, userValue);
                         endCaseGame = checkWin(field);
                         if (!endCaseGame) {
                             mediumMove(field);
@@ -106,39 +215,12 @@ public class Main {
                     }
                     gameResults(field);
                     break;
-                case "start user hard":
-                    userValue = 1;
-                    endCaseGame = false;
-                    printField(field);
-                    while (!endCaseGame) {
-                        addToField(field);
-                        endCaseGame = checkWin(field);
-                        if (!endCaseGame) {
-                            hardMove(field, userValue);
-                            endCaseGame = checkWin(field);
-                        }
-                    }
-                    gameResults(field);
-                    break;
                 case "start hard user":
                     userValue = -1;
                     endCaseGame = false;
                     printField(field);
                     while (!endCaseGame) {
                         hardMove(field, userValue);
-                        endCaseGame = checkWin(field);
-                        if (!endCaseGame) {
-                            addToField(field);
-                            endCaseGame = checkWin(field);
-                        }
-                    }
-                    gameResults(field);
-                    break;
-                case "start user user":
-                    endCaseGame = false;
-                    printField(field);
-                    while (!endCaseGame) {
-                        addToField(field);
                         endCaseGame = checkWin(field);
                         if (!endCaseGame) {
                             addToField(field);
@@ -177,7 +259,7 @@ public class Main {
         printField(field);
     }
 
-    static void stupidMove(char[][] field) {
+    static void easyMove(char[][] field) {
         Random random = new Random();
         System.out.println("Making move level \"easy\" ");
         boolean added = false;
@@ -266,7 +348,7 @@ public class Main {
     }
 
     static int addToHardMove(char[][] imaginaryField, int depth, int nowValue, int userValue) {
-        depth = depth / 8 - 9;
+        depth = depth / 8 - 13;
         char[][] imaginaryFieldMiniMax = copyField(imaginaryField);
         char nowTurn = turnXOr0(imaginaryFieldMiniMax);
         nowValue = 0;
@@ -321,17 +403,17 @@ public class Main {
     static boolean checkWinX(char[][] field) {
         boolean isWin = false;
         for (int i = 0; i < 3; i++) {
-            if (field[i][0] == 'X' && field[i][1] == 'X' && field[i][2] == 'X') {
+            if (field[i][0] == 'X' && field[i][1] == 'X' && field[i][2] == 'X') {           // rows
                 isWin = true;
                 break;
-            } else if (field[0][i] == 'X' && field[1][i] == 'X' && field[2][i] == 'X') {
+            } else if (field[0][i] == 'X' && field[1][i] == 'X' && field[2][i] == 'X') {    // columns
                 isWin = true;
                 break;
             }
-            if (field[0][0] == 'X' && field[1][1] == 'X' && field[2][2] == 'X') {
+            if (field[0][0] == 'X' && field[1][1] == 'X' && field[2][2] == 'X') {           // diagonal
                 isWin = true;
                 break;
-            } else if (field[0][2] == 'X' && field[1][1] == 'X' && field[2][0] == 'X') {
+            } else if (field[0][2] == 'X' && field[1][1] == 'X' && field[2][0] == 'X') {    // diagonal
                 isWin = true;
                 break;
             }
@@ -352,7 +434,7 @@ public class Main {
                 isWin = true;
                 break;
             }
-             if (field[0][0] == 'O' && field[1][1] == 'O' && field[2][2] == 'O') {          // diagonal
+            if (field[0][0] == 'O' && field[1][1] == 'O' && field[2][2] == 'O') {          // diagonal
                 isWin = true;
                 break;
             } else if (field[0][2] == 'O' && field[1][1] == 'O' && field[2][0] == 'O') {    // diagonal
@@ -435,6 +517,7 @@ public class Main {
         return countX > countO ? 'O' : 'X';
     }
 
+    // check remain steps
     static boolean isClearField(char[][] field) {
         int countSpaces = 0;
         for (int a = 0; a < 3; a++) {
@@ -447,6 +530,7 @@ public class Main {
         return countSpaces == 0;
     }
 
+    // print who win
     static void gameResults(char[][] field) {
         if (isClearField(field)) {
             System.out.println("Draw!");
